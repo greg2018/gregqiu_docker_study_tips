@@ -1,0 +1,69 @@
+
+
+docker run hello-world
+
+docker pull busybox
+
+docker run busybox
+
+docker run busybox echo "hello from busybox"
+
+docker ps
+
+docker ps -a
+
+docker run -it busybox sh
+
+ls
+
+uptime
+
+# run in git bash
+docker rm $(docker ps -a -q -f status=exited)
+
+docker container prune
+
+docker run --rm prakhar1989/static-site
+
+docker run -d -P --name static-site prakhar1989/static-site
+
+http://localhost:32769/
+https://localhost:32768
+
+docker run -p 9888:80 prakhar1989/static-site
+
+http://localhost:9888/
+
+docker images
+
+docker pull ubuntu:18.04
+
+###########
+## docker-curriculum flask-app
+
+parent repo: https://github.com/prakhar1989/docker-curriculum.git
+
+git clone https://github.com/prakhar1989/docker-curriculum.git
+
+fork repo: https://github.com/greg2018/docker-curriculum.git
+
+git clone https://github.com/greg2018/docker-curriculum.git
+
+cd C:\UserApps2\Docker\docker-curriculum\flask-app
+
+docker build -t gregqiu/catnip .
+
+docker run -p LOCAL_HOST_PORT_NUMBER:5000 gregqiu/catnip
+
+docker run -p 8888:5000 gregqiu/catnip
+
+docker run -p 5000:5000 gregqiu/catnip
+
+http://localhost:8888/
+
+docker run -p 7888:5000 gregqiu/catnip
+
+docker push gregqiu/catnip
+
+docker container logs es
+

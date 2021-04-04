@@ -1,0 +1,58 @@
+docker rm $(docker ps -a -q -f status=exited)
+docker login
+
+
+# FoodTrucks curriculum
+
+parent repo: 		https://github.com/prakhar1989/FoodTrucks
+
+fork repo:     		https://github.com/greg2018/FoodTrucks.git
+
+git clone https://github.com/greg2018/FoodTrucks.git
+
+#####/elasticsearch:6.3.2 and foodtrucks-web 
+docker pull docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+docker build -t gregqiu/foodtrucks-web .
+
+docker run -P --rm gregqiu/foodtrucks-web
+
+docker run -it --rm gregqiu/foodtrucks-web bash  (do it in Windows prompt or powershell ?)
+
+docker container stop es
+
+docker container rm es
+
+docker network create foodtrucks-net
+
+docker network rm  foodtrucks_default
+
+docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web gregqiu/foodtrucks-web
+
+http://localhost:5000
+
+curl localhost:5000/debug
+
+curl localhost:5000/hello
+
+curl -s localhost:5000/hello
+
+######
+docker stop es foodtrucks-web
+
+ docker rm es foodtrucks-web
+ 
+ docker network ls
+ 
+ docker container ls
+ 
+ docker-compose up
+ 
+ docker-compose down
+
+
+
